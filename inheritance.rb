@@ -32,3 +32,33 @@ puts paws.speak
 puts paws.name
 puts sparky.name
 puts sparky.color
+
+#### When to use class inheritence vs module ####
+#
+# Good practice to use class inheritence when you can say 'is-a'. A Dog is-a Animal
+# Good practice to use module/mixins when you can say 'has-a'. A can has-a engine
+
+puts "Inheritance"
+module Walkable
+  def walk
+    "walking"
+  end
+end
+
+class Mammel
+  def initialize
+    
+  end
+
+  def has_warm_blood
+    true
+  end
+end
+
+class Human < Mammel
+  include Walkable
+end
+
+me = Human.new
+print(Human.ancestors, "\n")
+puts me.walk
