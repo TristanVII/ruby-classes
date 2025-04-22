@@ -1,9 +1,8 @@
 class Dog
-
-  #CONSTANT
+  # CONSTANT
   DOG_YEARS = 7
   attr_accessor :name, :breed, :age
-  
+
   # class variable
   @@number_of_dogs = 0
 
@@ -13,20 +12,19 @@ class Dog
     @age = age * DOG_YEARS
     @@number_of_dogs += 1
   end
-  
+
   def bark
-    puts "WOOF"
+    puts 'WOOF'
   end
-  
+
   def self.total_number_of_dogs # class method definition
     @@number_of_dogs
   end
-  
+
   def to_s
     "Hi, woof. I am #{name}, I am #{age} years old...woof"
   end
 end
-
 
 puts Dog.total_number_of_dogs
 milo = Dog.new('milo', 'husky', 2)

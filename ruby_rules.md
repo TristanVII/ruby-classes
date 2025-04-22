@@ -1,0 +1,7 @@
+- One class per file
+- convention to put all Ruby files into 'lib'
+- Convention is that require_relative is used for your own code, while require is used for things outside of it, like gems that your app depend on
+- Good practice to wrap code in module, so methods are not overwritten. Benifits from namespace aswell
+- similar to requirements.txt > Gemfile. Install with `bundle install` or `bundle exec ruby file_name.rb`
+- Create with `bundle init` then `bundle add <name>`
+- linting: `bundle exec rubocop -S` run `bundle exec rubocop -a` to autocorrect (read more on rubocop linting https://www.theodinproject.com/lessons/ruby-linting-and-rubocop)
