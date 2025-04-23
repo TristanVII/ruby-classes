@@ -8,13 +8,37 @@ class Gameloop # rubocop:disable Style/Documentation
     @board = Board.new
   end
 
-  def run
+  def run(player1, player2) # rubocop:disable Metrics/MethodLength
+    turn = 1
     @state = 'START'
     while @state == 'START'
       @board.print_board
-      response = gets
-      puts response
+      player = turn.even? ? player2 : player1
+      puts "player: #{player}"
+      response = position_response
+      has_won = @board.update(response, turn)
+      if has_won
+        puts "player: #{player} has WON!!!"
+        @board.reset
+      end
+      turn += 1
     end
+  end
+
+  def valid_cell?(str)
+    value = @board.key_val(str)
+    value == ' '
+  end
+
+  def position_response
+    res = ''
+    while res == ''
+      puts 'Select an open cell'
+      res = gets
+      res = '' unless valid_cell? res
+      puts "'#{res}' is not a valid cell or it is already occupied" if res == ''
+    end
+    res
   end
 
   def stop
@@ -23,4 +47,4 @@ class Gameloop # rubocop:disable Style/Documentation
 end
 
 game = Gameloop.new
-game.run
+game.run('me', 'computer')
